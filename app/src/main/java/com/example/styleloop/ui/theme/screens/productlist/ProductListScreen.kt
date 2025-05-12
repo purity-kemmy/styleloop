@@ -33,7 +33,7 @@ fun getSampleProducts(category: String): List<Product> {
 }
 
 @Composable
-fun ProductList(categoryName: String) {
+fun ProductListScreen(categoryName: String = "Men") {
     // Fetch the list of products for the selected category
     val products = getSampleProducts(categoryName)
 
@@ -93,6 +93,6 @@ fun ProductItem(product: Product) {
 @Composable
 fun PreviewProductList() {
     StyleloopTheme {
-        ProductList(categoryName = "Men")
+        ProductListScreen(categoryName = "Men")
     }
 }

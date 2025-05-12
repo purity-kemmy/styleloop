@@ -1,7 +1,5 @@
 package com.example.styleloop
 
-
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,8 +16,11 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             StyleloopTheme {
-                val navController = rememberNavController() // Create the NavController
-                AppNavHost(navController = navController, startDestination = Routes.LOGIN) // Set start destination to LOGIN
+                val navController = rememberNavController()
+                AppNavHost(
+                    navController = navController,
+                    startDestination = Routes.SPLASH // ✅ Start with Splash Screen
+                )
             }
         }
     }

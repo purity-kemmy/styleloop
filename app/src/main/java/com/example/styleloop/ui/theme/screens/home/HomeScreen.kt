@@ -1,14 +1,7 @@
 package com.example.styleloop.ui.theme.screens.home
 
-
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,22 +10,29 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.styleloop.navigation.Routes
 
-
 @Composable
-fun HomeScreen(navController: NavController){
-    Column(Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Welcome to StyleLoop!", style = MaterialTheme.typography.headlineMedium)
+fun HomeScreen(navController: NavController) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Welcome to StyleLoop!",
+            style = MaterialTheme.typography.headlineMedium
+        )
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = { navController.navigate(Routes.CATEGORY_LIST) }) {
-            Text("Browse Categories")
-        }
+        // You can add navigation to a valid route if needed
+        // Example:
+         Button(onClick = { navController.navigate(Routes.PRODUCT_LIST) }) {
+            Text("Browse Products")
+         }
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
-fun HomeScreenPreview(){
+fun HomeScreenPreview() {
     HomeScreen(rememberNavController())
 }

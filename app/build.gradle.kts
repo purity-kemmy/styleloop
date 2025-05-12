@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -51,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -59,17 +61,31 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //Navigation
+    // Navigation Components
     implementation("androidx.navigation:navigation-runtime-ktx:2.8.9")
-    implementation("androidx.navigation:navigation-compose:2.8.9")
-    // Add this line for Navigation
-    implementation ("androidx.navigation:navigation-compose:2.5.3")
-    // Coil for Jetpack Compose
-    implementation("io.coil-kt:coil-compose:2.0.0")
+    implementation("androidx.navigation:navigation-compose:2.8.9") // Latest stable version
 
-    implementation("androidx.navigation:navigation-compose:2.4.0")
-    
+    // Compose Libraries
+    implementation("androidx.compose.material3:material3:1.1.0") // Material 3 for Compose
+    implementation("androidx.compose.ui:ui:1.5.0") // Latest Compose UI version
+    implementation("androidx.activity:activity-compose:1.7.0") // Compose support for activities
+
+    // Image Loading (Coil)
+    implementation("io.coil-kt:coil-compose:2.1.0") // For image loading in Compose
+
+    // Lifecycle Libraries
+    implementation ("com.google.firebase:firebase-auth:21.0.1") // Firebase authentication
+    implementation ("com.google.firebase:firebase-database:20.0.3")// Firebase Realtime Database
+
+    implementation("androidx.compose.ui:ui:1.4.0")// for Compose UI components
+    implementation("androidx.compose.runtime:runtime-livedata:1.4.0")// for LiveData support in Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0") // for viewModel() composable
 }
+
+
+
+
+
 
 
 

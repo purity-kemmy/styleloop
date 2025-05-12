@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "654736309483",
+    "project_id": "styleloop-5291d",
+    "storage_bucket": "styleloop-5291d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654736309483:android:109d6cebd8cdc2e79c12ae",
+        "android_client_info": {
+          "package_name": "com.example.styleloop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUMnVw6DWKzL6jW4yEVhuht9QN8Brn6U0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

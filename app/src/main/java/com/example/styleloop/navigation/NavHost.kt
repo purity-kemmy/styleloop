@@ -1,10 +1,10 @@
 package com.example.styleloop.navigation
 
-import android.window.SplashScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.styleloop.navigation.Routes.SIGNUP
 import com.example.styleloop.ui.screens.ProfileScreen
 import com.example.styleloop.ui.theme.screens.cart.CartScreen
 import com.example.styleloop.ui.theme.screens.checkout.CheckoutScreen
@@ -14,10 +14,11 @@ import com.example.styleloop.ui.theme.screens.orderconfirmation.OrderConfirmatio
 import com.example.styleloop.ui.theme.screens.productDetail.ProductDetailsScreen
 import com.example.styleloop.ui.theme.screens.productlist.ProductListScreen
 import com.example.styleloop.ui.theme.screens.signup.SignUpScreen
+import com.example.styleloop.ui.theme.screens.splash.SplashScreen
 
 
 @Composable
-fun AppNavHost(navController: NavHostController, startDestination: String) {
+fun AppNavHost(navController: NavHostController, startDestination: String=SIGNUP) {
     NavHost(navController = navController, startDestination = startDestination) {
 
         // Splash

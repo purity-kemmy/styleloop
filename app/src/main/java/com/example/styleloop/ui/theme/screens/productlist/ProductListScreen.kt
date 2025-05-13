@@ -14,7 +14,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.styleloop.models.Product
 import com.example.styleloop.ui.theme.StyleloopTheme
 import androidx.compose.material3.Text
-import androidx.navigation.NavController
+
 
 
 // Sample product data

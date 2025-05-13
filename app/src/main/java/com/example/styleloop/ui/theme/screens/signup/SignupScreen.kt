@@ -94,8 +94,6 @@ fun SignUpScreen(navController: NavController) {
                     password != confirmPassword -> errorMessage = "Passwords do not match"
                     else -> {
                         errorMessage = ""
-                        // TODO: Add your sign-up logic here (e.g., Firebase, API)
-                        // Navigate to Home or Category List after successful sign-up
                         navController.navigate(Routes.HOME)
                     }
                 }

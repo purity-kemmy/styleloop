@@ -10,18 +10,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.styleloop.R
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-
+import com.example.styleloop.R
 
 data class CartItem(
     val id: Int,
@@ -45,12 +39,11 @@ fun CartScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            // Corrected Top App Bar for Material3
             CenterAlignedTopAppBar(
                 title = {
                     Text("Your Cart")
                 },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors() // Optional, uses default colors
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors()
             )
         },
         bottomBar = {
@@ -65,7 +58,8 @@ fun CartScreen(navController: NavController) {
                     ) {
                         Text("Total: $${"%.2f".format(totalPrice)}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                         Button(onClick = {
-                            // Handle checkout
+                            // Navigate to checkout screen
+                            navController.navigate("checkout")
                         }) {
                             Text("Checkout")
                         }
@@ -105,11 +99,10 @@ fun CartItemRow(item: CartItem) {
             Text("Price: $${item.price}")
             Text("Quantity: ${item.quantity}")
         }
-        // (Optional) Add + / - buttons here
     }
 }
 @Preview(showBackground = true)
 @Composable
-fun PreviewCartScreen() {
-    CartScreen(rememberNavController())
+fun CartScreenPreview() {
+    CartScreen(navController = rememberNavController())
 }

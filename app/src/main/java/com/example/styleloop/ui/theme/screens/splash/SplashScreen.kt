@@ -9,23 +9,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.styleloop.R
-import com.example.styleloop.navigation.Routes
+import com.example.styleloop.navigation.PRODUCT_LIST
+import com.example.styleloop.navigation.SPLASH
 import kotlinx.coroutines.delay
-
 
 @Composable
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(Unit) {
+        // Wait for 2 seconds before navigating
         delay(2000)
-        navController.navigate(Routes.HOME) {
-            popUpTo(Routes.SPLASH) { inclusive = true }
+
+        // Navigate to the Home screen and pop the splash screen from the backstack
+        navController.navigate(PRODUCT_LIST) {
+            popUpTo(SPLASH) { inclusive = true }
         }
     }
 
+    // Main splash screen UI
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -33,12 +39,14 @@ fun SplashScreen(navController: NavController) {
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            // Display App Logo (ensure img_1 is in your drawable)
             Image(
-                painter = painterResource(id = R.drawable.img_4), // ✅ No .png
+                painter = painterResource(id = R.drawable.img_1), // ✅ Ensure this is a valid image in your resources
                 contentDescription = "App Logo",
-                modifier = Modifier.size(120.dp)
+                modifier = Modifier.size(700.dp)
             )
             Spacer(modifier = Modifier.height(24.dp))
+            // Display App Name
             Text(
                 text = "Styleloop",
                 fontSize = 30.sp,
@@ -47,4 +55,11 @@ fun SplashScreen(navController: NavController) {
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SplashScreenPreview() {
+    // Preview the SplashScreen
+    SplashScreen(navController = rememberNavController())
 }

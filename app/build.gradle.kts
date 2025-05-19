@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.styleloop"
-        minSdk = 24
+        minSdk = 23
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -80,7 +81,11 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.4.0")// for Compose UI components
     implementation("androidx.compose.runtime:runtime-livedata:1.4.0")// for LiveData support in Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0") // for viewModel() composable
-}
+
+
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0") // Ensure you have this for coroutines support
+        implementation("androidx.compose.runtime:runtime-livedata:1.0.0") // For Compose runtime if not already included
+    }
 
 
 

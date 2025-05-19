@@ -1,73 +1,93 @@
 package com.example.styleloop.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.styleloop.navigation.Routes.SIGNUP
-import com.example.styleloop.ui.screens.ProfileScreen
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.styleloop.ui.theme.screens.cart.CartScreen
 import com.example.styleloop.ui.theme.screens.checkout.CheckoutScreen
 import com.example.styleloop.ui.theme.screens.home.HomeScreen
 import com.example.styleloop.ui.theme.screens.login.LoginScreen
 import com.example.styleloop.ui.theme.screens.orderconfirmation.OrderConfirmationScreen
+import com.example.styleloop.ui.theme.screens.product.AddProductScreen
+import com.example.styleloop.ui.theme.screens.product.EditProductScreen
 import com.example.styleloop.ui.theme.screens.productDetail.ProductDetailsScreen
 import com.example.styleloop.ui.theme.screens.productlist.ProductListScreen
-import com.example.styleloop.ui.theme.screens.signup.SignUpScreen
+import com.example.styleloop.ui.theme.screens.signup.SignupScreen
 import com.example.styleloop.ui.theme.screens.splash.SplashScreen
 
-
 @Composable
-fun AppNavHost(navController: NavHostController, startDestination: String=SIGNUP) {
-    NavHost(navController = navController, startDestination = startDestination) {
-
+fun AppNavHost(
+    modifier: Modifier = Modifier,
+    navController: NavHostController= rememberNavController(),  // Correct parameter name here
+    startDestination: String = LOGIN
+) {
+    NavHost(
+        modifier = modifier,
+        navController = navController,  // Use navController here
+        startDestination = startDestination
+    ) {
         // Splash
-        composable(Routes.SPLASH) {
-            SplashScreen(navController = navController)
+        composable(SPLASH) {
+            SplashScreen(navController)
         }
 
         // Login
-        composable(Routes.LOGIN) {
-            LoginScreen(navController = navController)
+        composable(LOGIN ) {
+            LoginScreen(navController)
         }
 
         // Signup
-        composable(Routes.SIGNUP) {
-            SignUpScreen(navController = navController)
+        composable(SIGNUP ) {
+            SignupScreen(navController)
         }
 
         // Home
-        composable(Routes.HOME) {
-            HomeScreen(navController = navController)
+        composable(HOME) {
+            HomeScreen(navController)
         }
 
         // Product List
-        composable(Routes.PRODUCT_LIST) {
-            ProductListScreen()
+        composable(PRODUCT_LIST) {
+            ProductListScreen(navController)
         }
 
-        // Product Details with productName as a path argument
-        composable(Routes.PRODUCT_DETAILS) { backStackEntry ->
-            val productName = backStackEntry.arguments?.getString("productName") ?: ""
-            ProductDetailsScreen(productName = productName)
+        // Product Details (with dynamic productName)
+        composable(PRODUCT_DETAILS){
+            ProductDetailsScreen(productName = String())
         }
 
         // Cart
-        composable(Routes.CART) {
-            CartScreen(navController = navController)
+        composable(CART) {
+            CartScreen(navController)
         }
 
         // Checkout
-        composable(Routes.CHECKOUT) {
-            CheckoutScreen(navController = navController)
+        composable(CHECKOUT) {
+            CheckoutScreen(navController)
         }
 
         // Order Confirmation
-        composable(Routes.ORDER_CONFIRMATION) {
-            OrderConfirmationScreen(navController = navController)
+        composable(ORDER_CONFIRMATION) {
+            OrderConfirmationScreen(navController)
         }
-        composable(Routes.PROFILE) {
-            ProfileScreen(navController = navController)
+
+        composable(ADD_PRODUCT) {
+            AddProductScreen(navController = navController)
         }
-    }
+        composable(EDIT_PRODUCT) {
+            val productId = ""
+            EditProductScreen(navController = navController, productId = productId)
+        }
+
+        // Edit Product (optional screen with nav arguments)
+        composable("${EDIT_PRODUCT}/{productId}") { backStackEntry ->
+            val productId = backStackEntry.arguments?.getString("productId") ?: ""
+            EditProductScreen(navController, productId)
+        }
+ }
 }
